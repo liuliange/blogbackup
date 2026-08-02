@@ -1,0 +1,88 @@
+---
+layout: post
+slug: log
+title: 日志
+noDate: 'true'
+comments: 'false'
+abbrlink: log0001
+---
+<div class="photos-btn-wrap">
+	<a class="photos-btn" href="../">说说</a>
+	<a class="photos-btn" href="../photos/">相册</a>
+	<a class="photos-btn" href="../videos/">视频</a>
+	<a class="photos-btn active" href="javascript:void(0)">日志</a>
+</div>
+<link rel="stylesheet" href="../nav.css">
+<link rel="stylesheet" href="./jazz-timeline.css">
+<div class="jazz-timeline-wrapper">
+	<div class="jazz-timeline white-timeline bordered-timeline one-sided" id="jazz-timeline"></div>
+</div>
+<p class="timeline-loading">加载中…</p>
+<script>
+(function () {
+  var $wrap = document.getElementById('jazz-timeline')
+  var $loading = document.querySelector('.timeline-loading')
+
+  function escapeHtml(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+  }
+
+  function splitDate(d) {
+    var parts = String(d || '').split('-')
+    return {
+      ym: (parts[0] && parts[1]) ? parts[0] + '-' + parts[1] : (d || ''),
+      day: parts[2] || ''
+    }
+  }
+
+  function render(list) {
+    if (!$wrap) return
+    var html = ''
+    list.forEach(function (item) {
+      var s = splitDate(item.date)
+      html += '<div class="timeline-post">'
+      html += '  <div class="timeline-icon icon-larger icon-color-white">'
+      html += '    <span class="day">' + escapeHtml(s.day) + '</span>'
+      html += '    <span class="ym">' + escapeHtml(s.ym) + '</span>'
+      html += '    <div class="timeline-bar"></div>'
+      html += '  </div>'
+      html += '  <div class="timeline-content">'
+      if (item.title) html += '    <h2 class="content-title">' + escapeHtml(item.title) + '</h2>'
+      html += '    <div class="content-details"><p>' + escapeHtml(item.content) + '</p></div>'
+      html += '  </div>'
+      html += '</div>'
+    })
+    $wrap.innerHTML = html
+    if ($loading) $loading.style.display = 'none'
+  }
+
+  function load() {
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', './data.json', true)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          try {
+            var data = JSON.parse(xhr.responseText)
+            render((data && data.list) || [])
+          } catch (e) {
+            if ($loading) $loading.textContent = '数据解析失败'
+          }
+        } else {
+          if ($loading) $loading.textContent = '加载失败'
+        }
+      }
+    }
+    xhr.send()
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', load)
+  } else {
+    load()
+  }
+})()
+</script>

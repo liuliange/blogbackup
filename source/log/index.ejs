@@ -1,0 +1,25 @@
+---
+layout: post
+slug: log
+title: 建站日志
+noDate: 'true'
+comments: 'false'
+abbrlink: log0001
+---
+<link rel="stylesheet" href="./timeline.css">
+<div class="timeline-wrap">
+	<ul class="timeline" id="timeline"></ul>
+	<p class="timeline-loading">加载中…</p>
+</div>
+<script>
+  (function() {
+    var loadScript = function(path) {
+      var $script = document.createElement('script')
+      document.getElementsByTagName('body')[0].appendChild($script)
+      $script.setAttribute('src', path)
+    }
+    setTimeout(function() {
+      loadScript('./timeline.js')
+    }, 0)
+  })()
+</script>

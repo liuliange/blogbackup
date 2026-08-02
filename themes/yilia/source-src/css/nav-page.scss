@@ -1,0 +1,97 @@
+/* 导航页（/tools/）样式 */
+.nav-page {
+    padding: 10px 0;
+
+    .nav-group {
+        margin: 30px 0;
+
+        .nav-group-title {
+            position: relative;
+            display: inline-block;
+            color: #333;
+            font-size: 19px;
+            font-weight: 600;
+            padding-left: 12px;
+            margin-bottom: 0;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 5px;
+                bottom: 5px;
+                width: 4px;
+                border-radius: 2px;
+            }
+        }
+
+        /* 分组竖条配色：color1~5 */
+        &.g-1 .nav-group-title::before { background: #FF945C; }
+        &.g-2 .nav-group-title::before { background: #cc8167; }
+        &.g-3 .nav-group-title::before { background: #BA8F6C; }
+        &.g-4 .nav-group-title::before { background: #94635c; }
+        &.g-5 .nav-group-title::before { background: #7B5D5F; }
+
+        /* 标题下方分隔线 */
+        .nav-divider {
+            border: none;
+            height: 1px;
+            background: #ebedf1;
+            margin: 10px 0 12px 0;
+        }
+
+        .nav-group-desc {
+            color: #999;
+            font-size: 14px;
+            margin: 0 0 16px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            color: #495057;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all .22s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,.04);
+
+            &:hover {
+                background: #fff;
+                border-color: #ced4da;
+                color: #212529;
+                box-shadow: 0 3px 8px rgba(0,0,0,.08);
+                transform: translateY(-1px);
+            }
+            i.icon {
+                margin-right: 3px;
+                color: #adb5bd;
+                font-size: 11px;
+                transition: color .22s;
+            }
+            &:hover i.icon {
+                color: #495057;
+            }
+        }
+    }
+}
+
+/* 移动端：保持小尺寸、自动换行平铺，不撑满整行 */
+@media screen and (max-width: 800px) {
+    .nav-page .nav-group .nav-links {
+        gap: 8px;
+    }
+    .nav-page .nav-group .nav-link {
+        flex: 0 0 auto;
+        justify-content: flex-start;
+    }
+}

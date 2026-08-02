@@ -1,0 +1,45 @@
+<article class="article article-type-page categories-page" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <header class="article-header">
+      <h1 class="article-title">分类导航</h1>
+      <p class="categories-desc">共计 <%= site.categories.length %> 个分类, <%= site.tags.length %> 个标签</p>
+    </header>
+
+    <hr class="categories-divider">
+
+    <% if (site.categories.length){ %>
+    <section class="cat-section cat-1">
+      <h2 class="cat-section-title">分类</h2>
+      <div class="tagcloud category-tagcloud">
+        <% site.categories.sort('name').each(function(item){ %>
+          <% if(item.posts.length){ %>
+            <a href="<%- config.root %><%- item.path %>" class="color<%= item.name.length % 5 + 1 %>" title="<%= item.name %>">
+              <%= item.name %> · <%= item.posts.length %>
+            </a>
+          <% } %>
+        <% }) %>
+      </div>
+    </section>
+    <% } %>
+
+    <hr class="categories-divider">
+
+    <% if (site.tags.length){ %>
+    <section class="cat-section cat-2">
+      <h2 class="cat-section-title">标签</h2>
+      <div class="tagcloud tag-tagcloud">
+        <% site.tags.sort('name').each(function(item){ %>
+          <% if(item.posts.length){ %>
+            <a href="<%- config.root %><%- item.path %>" class="color<%= item.name.length % 5 + 1 %>" title="<%= item.name %>">
+              <%= item.name %> · <%= item.posts.length %>
+            </a>
+          <% } %>
+        <% }) %>
+      </div>
+    </section>
+    <% } %>
+
+    <div class="clearfix"></div>
+  </div>
+</article>
+<%- partial('_partial/aside', {index: false, post: null}) %>

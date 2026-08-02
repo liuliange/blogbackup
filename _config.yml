@@ -1,0 +1,134 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: 榴莲哥
+subtitle: 臭味相投我们是朋友
+description: 一枚水果搬运工
+keywords: "前端,javascript,jquery,html5,开发者,程序猿,编程,代码,开源,IT网站,Developer,Geek,html,css,css3,用户体验"
+author: 榴莲哥
+language: zh-Hans
+timezone:      #时区，默认为电脑时区
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+#url: http://yoursite.com
+url: https://liuliange.github.io
+#url: https://liuliange.github.io
+
+root: /
+# permalink: :title/
+permalink: archives/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+  
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+  
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: yilia
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo:
+     github: git@github.com:liuliange/liuliange.github.io.git
+     #coding: git@e.coding.net:liuliange/liuliange.git
+  branch: master
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+   title: true
+   date: true
+   path: true
+   text: false
+   raw: false
+   content: false
+   slug: false
+   updated: false
+   comments: false
+   link: false
+   permalink: false
+   excerpt: false
+   categories: false
+   tags: true
+#Live2D动画
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-hijiki
+  display:
+    position: right 
+    width: 150
+    height: 300
+  mobile:
+    show: true
+
+# Security
+## 文章加密 hexo-blog-encrypt
+encrypt:
+    enable: true

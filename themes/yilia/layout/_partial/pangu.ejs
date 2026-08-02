@@ -1,0 +1,10 @@
+<% if (theme.pangu){ %>
+<script defer src="https://cdn.jsdelivr.net/npm/pangu@9.1.0/dist/browser/pangu.min.js" crossorigin="anonymous"></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.pangu) {
+    pangu.spacingPage();
+  }
+});
+</script>
+<% } %>

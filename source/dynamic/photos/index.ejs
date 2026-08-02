@@ -1,0 +1,102 @@
+---
+layout: post
+slug: photos
+title: 相册
+noDate: 'true'
+comments: 'false'
+abbrlink: photos001
+---
+<div class="photos-btn-wrap">
+	<a class="photos-btn" href="../">说说</a>
+	<a class="photos-btn active" href="javascript:void(0)">相册</a>
+	<a class="photos-btn" href="../videos/">视频</a>
+	<a class="photos-btn" href="../log/">日志</a>
+</div>
+<link rel="stylesheet" href="../nav.css">
+<link rel="stylesheet" href="./ins.css">
+<div class="instagram itemscope" id="instagram"></div>
+<script>
+(function () {
+  var $wrap = document.getElementById('instagram')
+
+  function render(list) {
+    if (!$wrap) return
+    var html = ''
+    var currentYear = ''
+    var years = []
+    list.forEach(function (item) {
+      var y = String(item.year || '')
+      if (y && years.indexOf(y) === -1) years.push(y)
+      var arr = item.arr || {}
+      var links = arr.link || []
+      var types = arr.type || []
+      var texts = arr.text || []
+      if (!links.length) return
+      var y2 = item.year || ''
+      if (y2 && y2 !== currentYear) {
+        currentYear = y2
+        if (html) html += '</ul></section>'
+        html += '<section class="year-group" data-year="' + y2 + '">'
+        html += '<div class="year">' + y2 + ' 年</div>'
+        html += '<ul class="ins-list">'
+      }
+      links.forEach(function (src, i) {
+        if ((types[i] || 'image') === 'video') return
+        var text = texts[i] || ''
+        html += '<li>'
+        html += '  <div class="img-box"><img src="' + src + '" alt="' + text + '"></div>'
+        if (text) html += '<div class="img-mask">' + text + '</div>'
+        html += '</li>'
+      })
+    })
+    if (html) html += '</ul></section>'
+    $wrap.innerHTML = html
+    renderTimeline(years)
+  }
+
+  function renderTimeline(years) {
+    if (!years.length) return
+    years.sort(function (a, b) { return b - a })
+    var t = '<div class="photos-btn-wrap photo-year-wrap">'
+    years.forEach(function (y, i) {
+      t += '<span class="photos-btn photo-year-tab' + (i === 0 ? ' active' : '') + '" data-year="' + y + '" onclick="filterPhotoYear(\'' + y + '\')">' + y + '</span>'
+    })
+    t += '</div>'
+    var firstSection = $wrap.querySelector('.year-group')
+    if (firstSection) {
+      firstSection.insertAdjacentHTML('beforebegin', t)
+    } else {
+      $wrap.insertAdjacentHTML('afterbegin', t)
+    }
+  }
+
+  function load() {
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', './data.json', true)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        try {
+          var data = JSON.parse(xhr.responseText)
+          render((data && data.list) || [])
+        } catch (e) {}
+      }
+    }
+    xhr.send()
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', load)
+  } else {
+    load()
+  }
+})()
+function filterPhotoYear(year) {
+  var wrap = document.getElementById('instagram')
+  var tabs = wrap.querySelectorAll('.photo-year-tab')
+  tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('data-year') === year) })
+  var groups = wrap.querySelectorAll('.year-group')
+  groups.forEach(function (g) {
+    g.style.display = g.getAttribute('data-year') === year ? 'block' : 'none'
+  })
+}
+</script>

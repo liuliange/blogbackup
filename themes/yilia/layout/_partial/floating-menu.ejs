@@ -1,0 +1,50 @@
+<div class="floating-menu" id="floating-menu">
+  <div class="fm-sub-list">
+    <a class="fm-sub fm-top" id="fm-back-top" title="回到顶部" href="javascript:void(0)"><i class="fa-solid fa-arrow-up"></i></a>
+    <a class="fm-sub fm-weixin" title="微信" href="https://my.feishu.cn/wiki/RMKjwYflBiru4qkyktjcHl7mnLh?from=from_copylink" target="_blank" rel="noopener"><i class="fa-brands fa-weixin"></i></a>
+    <a class="fm-sub fm-qq" title="QQ群" href="https://qm.qq.com/q/Dhu9fAUUDe" target="_blank" rel="noopener"><i class="fa-brands fa-qq"></i></a>
+    <a class="fm-sub fm-disk" title="网盘资源库" href="https://my.feishu.cn/wiki/VYxcwTey8iHJVpkBoA9cOqG8nqh" target="_blank" rel="noopener"><i class="fa-solid fa-paper-plane"></i></a>
+    <a class="fm-sub fm-theme" id="fm-theme-toggle" title="切换深色模式" href="javascript:void(0)"><i class="fa-solid fa-moon"></i></a>
+  </div>
+  <button class="fm-main" id="fm-main-btn" aria-label="展开菜单"><i class="fa-solid fa-plus"></i></button>
+</div>
+<script>
+(function () {
+  function syncThemeIcon() {
+    var t = document.documentElement.getAttribute('data-theme');
+    var icon = document.querySelector('#fm-theme-toggle i');
+    var toggle = document.getElementById('fm-theme-toggle');
+    if (icon) icon.className = t === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    if (toggle) toggle.title = t === 'dark' ? '切换浅色模式' : '切换深色模式';
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    var menu = document.getElementById('floating-menu');
+    if (!menu) return;
+    document.getElementById('fm-main-btn').addEventListener('click', function (e) {
+      e.stopPropagation();
+      menu.classList.toggle('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('open') && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+    document.getElementById('fm-back-top').addEventListener('click', function () {
+      // yilia 主题的滚动容器可能是 window / body / #container，全部滚动以兼容
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (document.body.scrollTo) document.body.scrollTo({ top: 0, behavior: 'smooth' });
+      var c = document.getElementById('container');
+      if (c && c.scrollTo) c.scrollTo({ top: 0, behavior: 'smooth' });
+      var mid = document.querySelector('.mid-col');
+      if (mid && mid.scrollTo) mid.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.getElementById('fm-theme-toggle').addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', cur);
+      try { localStorage.setItem('theme', cur); } catch (e) {}
+      syncThemeIcon();
+    });
+    syncThemeIcon();
+  });
+})();
+</script>

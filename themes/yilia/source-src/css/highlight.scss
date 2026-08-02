@@ -1,0 +1,253 @@
+$highlight-comment: #75715e;
+$highlight-color: #fff;
+
+.article-entry pre,
+.article-entry .highlight {
+  background: #272822;
+  margin: 10px 0;
+  padding: 10px 10px;
+  overflow: auto;
+  color: $highlight-color;
+  font-size: 0.9em;
+  line-height: 22.400000000000002px;
+}
+.article-entry .highlight .gutter pre,
+.article-entry .highlight .gutter pre .line,
+.article-entry .gist .gist-file .gist-data .line-numbers {
+  color: #666;
+}
+.article-entry pre,
+.article-entry code {
+  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+}
+.article-entry code {
+  background: #eee;
+  padding: 0 0.3em;
+  border: none;
+}
+.article-entry pre code {
+  background: none;
+  text-shadow: none;
+  padding: 0;
+  color: $highlight-color;
+}
+
+.article-entry .highlight {
+  border-radius: 4px;
+}
+.article-entry .highlight pre {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.article-entry .highlight table {
+  margin: 0;
+  width: auto;
+}
+.article-entry .highlight td {
+  border: none;
+  padding: 0;
+}
+.article-entry .highlight figcaption {
+  color: $highlight-comment;
+  line-height: 1em;
+  margin-bottom: 1em;
+}
+.article-entry .highlight figcaption:before,
+.article-entry .highlight figcaption:after {
+  content: "";
+  display: table;
+}
+.article-entry .highlight figcaption:after {
+  clear: both;
+}
+.article-entry .highlight figcaption a {
+  float: right;
+}
+.article-entry .highlight .gutter pre {
+  text-align: right;
+  padding-right: 20px;
+}
+.article-entry .highlight .gutter pre .line {
+  text-shadow: none;
+}
+.article-entry .highlight .line {
+  color: #f8f8f2;
+  min-height: 19px;
+}
+.article-entry .gist {
+  margin: 0 -20px;
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 1px 0;
+  background: #272822;
+  padding: 15px 20px 15px 0;
+}
+.article-entry .gist .gist-file {
+  border: none;
+  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  margin: 0;
+}
+.article-entry .gist .gist-file .gist-data {
+  background: none;
+  border: none;
+}
+.article-entry .gist .gist-file .gist-data .line-numbers {
+  background: none;
+  border: none;
+  padding: 0 20px 0 0;
+}
+.article-entry .gist .gist-file .gist-data .line-data {
+  padding: 0 !important;
+}
+.article-entry .gist .gist-file .highlight {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.article-entry .gist .gist-file .gist-meta {
+  background: #272822;
+  color: $highlight-comment;
+  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: 0 0;
+  padding: 0;
+  margin-top: 1em;
+  margin-left: 20px;
+}
+.article-entry .gist .gist-file .gist-meta a {
+  color: #258fb8;
+  font-weight: normal;
+}
+.article-entry .gist .gist-file .gist-meta a:hover {
+  text-decoration: underline;
+}
+
+.article-entry .highlight .line .comment,
+.article-entry .highlight .line .quote {
+  color: #75715e;
+}
+.article-entry .highlight .line .keyword,
+.article-entry .highlight .line .selector-tag,
+.article-entry .highlight .line .subst,
+.article-entry .highlight .line .function .keyword,
+.article-entry .highlight .line .class .params {
+  color: #66d9ef;
+}
+.article-entry .highlight .line .tag,
+.article-entry .highlight .line .doctype,
+.article-entry .highlight .line .params,
+.article-entry .highlight .line .function,
+.article-entry .highlight .line .css .value {
+  color: #f8f8f2;
+}
+.article-entry .highlight .line .css ~ * .tag,
+.article-entry .highlight .line .title,
+.article-entry .highlight .line .at_rule,
+.article-entry .highlight .line .at_rule .keyword,
+.article-entry .highlight .line .preprocessor,
+.article-entry .highlight .line .preprocessor .keyword {
+  color: #f92672;
+}
+.article-entry .highlight .line .attribute,
+.article-entry .highlight .line .attr,
+.article-entry .highlight .line .built_in,
+.article-entry .highlight .line .class,
+.article-entry .highlight .line .css ~ * .class,
+.article-entry .highlight .line .function .title {
+  color: #a6e22e;
+}
+.article-entry .highlight .line .value,
+.article-entry .highlight .line .string,
+.article-entry .highlight .line .regexp,
+.article-entry .highlight .line .link {
+  color: #e6db74;
+}
+.article-entry .highlight .line .number,
+.article-entry .highlight .line .literal,
+.article-entry .highlight .line .variable,
+.article-entry .highlight .line .template-variable {
+  color: #ae81ff;
+}
+.article-entry .highlight .line .id,
+.article-entry .highlight .line .css ~ * .id {
+  color: #fd971f;
+}
+.article-entry .highlight .line .name,
+.article-entry .highlight .line .selector-id,
+.article-entry .highlight .line .selector-class,
+.article-entry .highlight .line .selector-attr,
+.article-entry .highlight .line .selector-pseudo {
+  color: #a6e22e;
+}
+.article-entry .highlight .line .type,
+.article-entry .highlight .line .bullet {
+  color: #66d9ef;
+}
+.article-entry .highlight .line .meta {
+  color: #f92672;
+}
+.article-entry .highlight .line .symbol,
+.article-entry .highlight .line .punctuation {
+  color: #f8f8f2;
+}
+.article-entry .highlight .line .deleted {
+  color: #f92672;
+}
+.article-entry .highlight .line .addition {
+  color: #a6e22e;
+}
+.article-entry .highlight .line .emphasis {
+  font-style: italic;
+}
+.article-entry .highlight .line .strong {
+  font-weight: bold;
+}
+
+/* 代码块复制按钮 */
+.btn-copy {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1;
+  color: #333;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.btn-copy:hover {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.highlight:hover .btn-copy,
+.code-wrapper:hover .btn-copy {
+  opacity: 1;
+}
+.btn-copy i {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 800px) {
+  .btn-copy {
+    opacity: 1;
+    top: 4px;
+    right: 4px;
+    padding: 4px 8px;
+    font-size: 11px;
+    gap: 3px;
+  }
+  .btn-copy i {
+    font-size: 11px;
+  }
+}

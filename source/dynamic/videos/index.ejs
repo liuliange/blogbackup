@@ -1,0 +1,73 @@
+---
+layout: post
+slug: videos
+title: 视频
+noDate: 'true'
+comments: 'false'
+abbrlink: videos001
+---
+<div class="photos-btn-wrap">
+	<a class="photos-btn" href="../">说说</a>
+	<a class="photos-btn" href="../photos/">相册</a>
+	<a class="photos-btn active" href="javascript:void(0)">视频</a>
+	<a class="photos-btn" href="../log/">日志</a>
+</div>
+<link rel="stylesheet" href="../nav.css">
+<link rel="stylesheet" href="./videos.css">
+<div class="video-list" id="video-list"></div>
+<p class="timeline-loading">加载中…</p>
+<script>
+(function () {
+  var $wrap = document.getElementById('video-list')
+  var $loading = document.querySelector('.timeline-loading')
+
+  function escapeHtml(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+  }
+
+  function render(list) {
+    if (!$wrap) return
+    var html = ''
+    list.forEach(function (item) {
+      var src = item.src || ''
+      var title = item.title || ''
+      if (!src) return
+      html += '<div class="video-item">'
+      html += '  <div class="video-container"><iframe src="' + escapeHtml(src) + '" allowfullscreen></iframe></div>'
+      if (title) html += '  <div class="video-title">' + escapeHtml(title) + '</div>'
+      html += '</div>'
+    })
+    $wrap.innerHTML = html
+    if ($loading) $loading.style.display = 'none'
+  }
+
+  function load() {
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', './data.json', true)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          try {
+            var data = JSON.parse(xhr.responseText)
+            render((data && data.list) || [])
+          } catch (e) {
+            if ($loading) $loading.textContent = '数据解析失败'
+          }
+        } else {
+          if ($loading) $loading.textContent = '加载失败'
+        }
+      }
+    }
+    xhr.send()
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', load)
+  } else {
+    load()
+  }
+})()
+</script>

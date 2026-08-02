@@ -1,0 +1,76 @@
+/* 右下角悬浮菜单：主按钮 + 回到顶部/微信/QQ群/网盘资源库/主题切换 */
+.floating-menu {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fm-sub-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.fm-sub {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #e3e3e6;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .14);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(.6);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s, color .2s;
+}
+.floating-menu.open .fm-sub {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+/* 自下而上依次弹出（靠近主按钮的先出现） */
+.floating-menu.open .fm-sub:nth-child(5) { transition-delay: 0s; }
+.floating-menu.open .fm-sub:nth-child(4) { transition-delay: .04s; }
+.floating-menu.open .fm-sub:nth-child(3) { transition-delay: .08s; }
+.floating-menu.open .fm-sub:nth-child(2) { transition-delay: .12s; }
+.floating-menu.open .fm-sub:nth-child(1) { transition-delay: .16s; }
+.floating-menu.open .fm-sub:hover { transform: translateY(-2px) scale(1.06); }
+.fm-sub.fm-top { color: #fff; background: #4d4d4d; border-color: #4d4d4d; }
+.fm-sub.fm-weixin { color: #07c160; }
+.fm-sub.fm-qq { color: #12b7f5; }
+.fm-sub.fm-disk { color: #3370ff; }
+.fm-sub.fm-theme { color: #f5a623; }
+.fm-main {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #4d4d4d;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
+  transition: transform .25s ease, background .2s;
+  padding: 0;
+}
+.fm-main:hover { background: #5e5e5e; }
+.floating-menu.open .fm-main { transform: rotate(45deg); }
+
+@media screen and (max-width: 800px) {
+  .floating-menu { right: 14px; bottom: 76px; }
+  .fm-main { width: 44px; height: 44px; font-size: 18px; }
+  .fm-sub { width: 38px; height: 38px; font-size: 15px; }
+}
