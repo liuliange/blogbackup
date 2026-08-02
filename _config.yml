@@ -88,10 +88,8 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo:
-     github: https://github.com/liuliange/liuliange.github.io.git
-     #coding: git@e.coding.net:liuliange/liuliange.git
-  branch: main
+  repo: https://github.com/liuliange/liuliange.github.io.git
+  branch: gh-pages
 jsonContent:
   meta: false
   pages: false
