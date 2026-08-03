@@ -58,10 +58,10 @@ html[data-theme="dark"] {
   .intrude-less .header-author { border-bottom-color: var(--d-border); }
   .hide-left-col .article { background: var(--d-card); }
 
-  /* ---- 页面左上角竖条装饰线（#4d4d4d → 亮色，与主色调统一） ---- */
+  /* ---- 页面左上角竖条装饰线（使用头像外圈紫色） ---- */
   .article-header,
   .archive-year-wrap {
-    border-left-color: #8a8a90;
+    border-left-color: #88acdb;
   }
 
   /* ---- 文章卡片 ---- */

@@ -1,6 +1,11 @@
 <%- partial('_partial/head') %>
 <body>
   <div id="container" q-class="show:isCtnShow">
+    <% if (theme.corner_badge && theme.corner_badge.enable){ %>
+    <a class="corner-badge" href="<%= theme.corner_badge.url || 'javascript:void(0)' %>" target="_blank" rel="noopener">
+      <span class="corner-badge-text"><%= theme.corner_badge.text %></span>
+    </a>
+    <% } %>
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       <%- partial('_partial/left-col', null, {cache: !config.relative_link}) %>

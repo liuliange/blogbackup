@@ -23,8 +23,15 @@ subnav:
   #google: "#"
   #twitter: "#"
   #linkedin: "#"
-  
-  # 你的名字跟网站副标题
+
+# 右上角丝带角标（Corner Badge）
+# enable: false 可关闭；text 为角标文字；url 为点击跳转
+corner_badge:
+  enable: true
+  text: '微信：525821377'
+  url: 'https://my.feishu.cn/wiki/RMKjwYflBiru4qkyktjcHl7mnLh?from=from_copylink'
+
+# 你的名字跟网站副标题
 author: 榴莲哥
 subtitle: '臭味相投我们是朋友'
 
@@ -93,14 +100,15 @@ smart_menu:
   aboutme: '关于我'
 
 friends:
-  榴莲: https://www.durian.cn/
-  淘宝优惠券: https://www.jianpianyi.cn/
-  缤果资源: https://www.binguo.net/
-  #友情链接4: http://localhost:4000/
-  #友情链接5: http://localhost:4000/
-  #友情链接6: http://localhost:4000/
+  缤果网: https://binguo.net
+  特价团: https://tejiatuan.cn/
+  特惠团: https://tehuituan.cn/
+  特卖团: https://temaituan.cn/
+  捡便宜: https://jianpianyi.cn/
+  资源库: https://199909.com
+  资源搜索: https://pan.binguo.net
 
-aboutme: 榴莲哥<br/><br/><br/>来自广西崇左<br/>热爱生活喜欢折腾 目前是一枚水果搬运工<br/>胆小认生不易相处 年轻无为卖果为生<br/>日常琐碎不堪记忆无处安放 遂筑博客一枚以作日记之用
+aboutme: 榴莲哥<br/><br/>来自广西崇左<br/>热爱生活喜欢折腾 目前是一枚水果搬运工<br/>胆小认生不易相处 年轻无为卖果为生<br/>日常琐碎不堪记忆无处安放 遂筑博客一枚以作日记之用
 
 # 是否开启字数统计
 # 不需要使用，直接设置值为false，或注释掉

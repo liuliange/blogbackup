@@ -24,7 +24,7 @@
     .tools-wrap, .tools-section{
         height: 100%;
         color: #e5e5e5;
-        width: 360px;
+        width: 300px;
         overflow: hidden;
         overflow-y: auto;
         ::-webkit-scrollbar {
@@ -33,13 +33,11 @@
     }
     .tools-section {
         .search-wrap {
-            width: calc(100% - 40px);
+            width: 310px;
             margin: 20px 20px 10px 20px;
             position: relative;
             .search-ipt {
-                width: 100%;
-                padding-right: 30px;
-                box-sizing: border-box;
+                width: 310px;
                 color: #fff;
                 background: none;
                 border: none;
@@ -64,22 +62,28 @@
         .search-tag.tagcloud {
             text-align: center;
             position: relative;
+            width: 290px;
+            margin: 0 0 0 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            align-items: center;
             .search-tag-wording {
                 font-size: 12px;
-                float: right;
-                margin: 4px 75px 0 0;
+                margin: 0 2px 0 0;
             }
             .search-switch {
                 width: 40px;
                 height: 25px;
                 display: block;
+                position: relative;
             }
             .search-switch input {
                 width: 40px;
                 height: 14px;
                 position: absolute;
                 top: 0;
-                right: 30px;
+                right: 0;
                 z-index: 2;
                 border: 0;
                 background: 0 0;
@@ -131,8 +135,9 @@
             .article-tag-list {
                 @extend %trans;
                 display: none;
-                margin: 15px 10px 0;
-                padding: 10px;
+                flex: 0 0 100%;
+                margin: 15px 0 0;
+                padding: 10px 20px 10px 10px;
                 background: rgba(255,255,255,0.2);
                 &.show {
                     display: block;

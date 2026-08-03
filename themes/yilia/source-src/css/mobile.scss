@@ -33,10 +33,14 @@ html, body, #container {
     .tools-wrap, .tools-section {
         width: 300px;
         .search-wrap {
-            width: calc(100% - 40px);
+            width: 280px;
         }
         .search-tag.tagcloud {
-            margin-right: -30px;
+            width: 290px;
+            margin: 0 0 0 10px;
+            .search-tag-wording {
+                margin: 0 2px 0 0;
+            }
         }
         .search-ul .search-li {
             padding: 5px 20px;
