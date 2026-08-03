@@ -5,3 +5,4 @@ db.json
 tmp-*
 .codebuddy/
 .deploy_git/
+.playwright-cli/
