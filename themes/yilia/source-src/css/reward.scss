@@ -1,6 +1,28 @@
 .page-reward {
     margin: 60px 0;
     text-align: center;
+    @media screen and (max-width: 800px) {
+        .tooltip-content {
+            width: 280px;
+            margin-left: -140px;
+            padding-bottom: 40px;
+        }
+        .tooltip-inner {
+            padding: 20px;
+        }
+        .reward-box {
+            justify-content: center;
+        }
+        .reward-img {
+            width: 90px;
+            height: 90px;
+            border-width: 4px;
+        }
+        .reward-type {
+            margin: 10px 0 0 0;
+            font-size: 14px;
+        }
+    }
     .page-reward-btn {
         position: relative;
         display: inline-block;
